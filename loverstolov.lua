@@ -70,8 +70,8 @@ local knopka1 = ''
 local knopka2 = ''
 local emulate_F5 = false
 
-local script_vers = 1.15
-local script_vers_text = "1.15"
+local script_vers = 1.16
+local script_vers_text = "1.16"
 local update_url = "https://raw.githubusercontent.com/DedisonVan/ParsingPython/main/update.ini" -- тут тоже свою ссылку
 local update_path = getWorkingDirectory() .. "/update.ini" -- и тут свою ссылку
 
@@ -107,7 +107,6 @@ function main()
 		end
 	 end)
 	sampRegisterChatCommand("bug", bug)
-	sampRegisterChatCommand("proverka", proverka)
 	sampRegisterChatCommand("max", TableMax)
 	createDirectory('moonloader/config')
 	downloadUrlToFile(update_url, update_path, function(id, status)
@@ -214,10 +213,6 @@ function main()
 			end
 		end
 	end
-end
-
-function proverka()
-	sampAddChatMessage('Обновление: ' .. script_vers .. '\n123', -1)
 end
 
 function cursor()
