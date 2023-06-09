@@ -70,8 +70,8 @@ local knopka1 = ''
 local knopka2 = ''
 local emulate_F5 = false
 
-local script_vers = 1.16
-local script_vers_text = "1.16"
+local script_vers = 1.17
+local script_vers_text = "1.17"
 local update_url = "https://raw.githubusercontent.com/DedisonVan/ParsingPython/main/update.ini" -- тут тоже свою ссылку
 local update_path = getWorkingDirectory() .. "/update.ini" -- и тут свою ссылку
 
@@ -107,6 +107,7 @@ function main()
 		end
 	 end)
 	sampRegisterChatCommand("bug", bug)
+	sampRegisterChatCommand("ids", id_text)
 	sampRegisterChatCommand("max", TableMax)
 	createDirectory('moonloader/config')
 	downloadUrlToFile(update_url, update_path, function(id, status)
@@ -215,6 +216,11 @@ function main()
 	end
 end
 
+function id_text(arg)
+	text = sampTextdrawGetString(tonumber(arg))
+	sampAddChatMessage(text, -1)
+end
+
 function cursor()
 	emulate_F5 = not emulate_F5
 	if emulate_F5 then
@@ -281,11 +287,10 @@ function onD3DPresent()
 		if info_screen.v then
 		local resX, resY = getScreenResolution()
 			renderFontDrawText(my_font1, '{FF8C00} Денег: {FFFF00}' .. money .. '$', resX - 420, (resY - 850) + 7, 0xFF00FF00)
-			renderFontDrawText(my_font, '{FF8C00} Ловля: ' .. info_script, resX - 320, (resY - 250) + 7, 0xFF00FF00)
-			renderFontDrawText(my_font, '{FF8C00} Кликер: ' .. info_clicker, resX - 320, (resY - 220) + 7, 0xFF00FF00)
-			renderFontDrawText(my_font, '{FF8C00} Мин. ставка: {FFFF00}' .. pricemetr.v .. '$', resX - 320, (resY - 190) + 7, 0xFF00FF00)
-			renderFontDrawText(my_font, '{FF8C00} Макс. ставка: {FFFF00}' .. pricemetr1.v .. '$', resX - 320, (resY - 160) + 7, 0xFF00FF00)
-			renderFontDrawText(my_font, '{FF8C00} Задержка клика: {FFFF00}' .. zaderzhkachecka.v, resX - 320, (resY - 130) + 7, 0xFF00FF00)
+			renderFontDrawText(my_font, '{FF8C00} Ловля: ' .. info_script, resX - 320, (resY - 210) + 7, 0xFF00FF00)
+			renderFontDrawText(my_font, '{FF8C00} Кликер: ' .. info_clicker, resX - 320, (resY - 180) + 7, 0xFF00FF00)
+			renderFontDrawText(my_font, '{FF8C00} Мин. ставка: {FFFF00}' .. pricemetr.v .. '$', resX - 320, (resY - 150) + 7, 0xFF00FF00)
+			renderFontDrawText(my_font, '{FF8C00} Макс. ставка: {FFFF00}' .. pricemetr1.v .. '$', resX - 320, (resY - 120) + 7, 0xFF00FF00)
 		end
 	end
 end
