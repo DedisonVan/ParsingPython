@@ -10,6 +10,7 @@ local game_keys = require 'lib.game.keys'
 local ffi = require("ffi")
 local encoding = require('encoding')
 local key = require 'vkeys'
+local dlstatus = require('moonloader').download_status
 
 ffi.cdef[[
 bool SetCursorPos(int X, int Y);
@@ -69,12 +70,12 @@ local knopka1 = ''
 local knopka2 = ''
 local emulate_F5 = false
 
-local script_vers = 1.14
-local script_vers_text = "1.14"
-local update_url = "https://raw.githubusercontent.com/DedisonVan/loverstolov/main/update.ini" -- тут тоже свою ссылку
+local script_vers = 1.15
+local script_vers_text = "1.15"
+local update_url = "https://raw.githubusercontent.com/DedisonVan/ParsingPython/main/update.ini" -- тут тоже свою ссылку
 local update_path = getWorkingDirectory() .. "/update.ini" -- и тут свою ссылку
 
-local script_url = "https://raw.githubusercontent.com/DedisonVan/loverstolov/main/loverstolov.luac" -- тут свою ссылку
+local script_url = "https://raw.githubusercontent.com/DedisonVan/ParsingPython/main/loverstolov.lua" -- тут свою ссылку
 local script_path = thisScript().path
 
 local directIni = 'loverstolov.ini' --название файла в папке moonloader/config
@@ -106,6 +107,7 @@ function main()
 		end
 	 end)
 	sampRegisterChatCommand("bug", bug)
+	sampRegisterChatCommand("proverka", proverka)
 	sampRegisterChatCommand("max", TableMax)
 	createDirectory('moonloader/config')
 	downloadUrlToFile(update_url, update_path, function(id, status)
@@ -212,6 +214,10 @@ function main()
 			end
 		end
 	end
+end
+
+function proverka()
+	sampAddChatMessage('Обновление: ' .. script_vers .. '\n123', -1)
 end
 
 function cursor()
